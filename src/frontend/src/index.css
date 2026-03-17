@@ -1,0 +1,165 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Background: clean white */
+    --background: 0.99 0 0;
+    --foreground: 0.15 0.02 250;
+
+    /* Cards */
+    --card: 0.99 0 0;
+    --card-foreground: 0.15 0.02 250;
+
+    /* Popover */
+    --popover: 0.99 0 0;
+    --popover-foreground: 0.15 0.02 250;
+
+    /* Primary: Deep Blue */
+    --primary: 0.45 0.18 250;
+    --primary-foreground: 0.99 0 0;
+
+    /* Secondary: Growth Green */
+    --secondary: 0.55 0.16 155;
+    --secondary-foreground: 0.99 0 0;
+
+    /* Muted */
+    --muted: 0.95 0.01 250;
+    --muted-foreground: 0.5 0.04 250;
+
+    /* Accent: Action Orange */
+    --accent: 0.72 0.18 50;
+    --accent-foreground: 0.99 0 0;
+
+    /* Destructive */
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.99 0 0;
+
+    /* Border/Input */
+    --border: 0.9 0.02 250;
+    --input: 0.9 0.02 250;
+    --ring: 0.45 0.18 250;
+
+    --radius: 0.625rem;
+
+    /* Brand colors */
+    --blue: 0.45 0.18 250;
+    --blue-light: 0.92 0.06 250;
+    --blue-dark: 0.3 0.15 250;
+    --green: 0.55 0.16 155;
+    --green-light: 0.92 0.06 155;
+    --orange: 0.72 0.18 50;
+    --orange-dark: 0.6 0.2 45;
+
+    /* Chart */
+    --chart-1: 0.45 0.18 250;
+    --chart-2: 0.55 0.16 155;
+    --chart-3: 0.72 0.18 50;
+    --chart-4: 0.65 0.15 200;
+    --chart-5: 0.8 0.12 80;
+
+    /* Sidebar */
+    --sidebar: 0.97 0.01 250;
+    --sidebar-foreground: 0.15 0.02 250;
+    --sidebar-primary: 0.45 0.18 250;
+    --sidebar-primary-foreground: 0.99 0 0;
+    --sidebar-accent: 0.95 0.02 250;
+    --sidebar-accent-foreground: 0.15 0.02 250;
+    --sidebar-border: 0.9 0.02 250;
+    --sidebar-ring: 0.45 0.18 250;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", sans-serif;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Bricolage Grotesque", sans-serif;
+  }
+}
+
+@layer utilities {
+  .section-fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .section-fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .pulse-ring {
+    animation: pulseRing 2s ease-in-out infinite;
+  }
+
+  @keyframes pulseRing {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 oklch(0.55 0.16 155 / 0.4);
+    }
+    50% {
+      box-shadow: 0 0 0 12px oklch(0.55 0.16 155 / 0);
+    }
+  }
+
+  .hero-bg {
+    background: linear-gradient(
+      135deg,
+      oklch(0.97 0.04 250) 0%,
+      oklch(0.95 0.06 250) 40%,
+      oklch(0.95 0.04 155) 100%
+    );
+  }
+
+  .blue-gradient-bg {
+    background: linear-gradient(
+      135deg,
+      oklch(0.35 0.18 250) 0%,
+      oklch(0.4 0.2 260) 50%,
+      oklch(0.4 0.15 220) 100%
+    );
+  }
+
+  .card-hover {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px oklch(0.45 0.18 250 / 0.15);
+  }
+
+  .map-dot {
+    width: 12px;
+    height: 12px;
+    background: oklch(0.55 0.16 155);
+    border-radius: 50%;
+    position: absolute;
+    animation: mapPing 3s ease-in-out infinite;
+  }
+
+  @keyframes mapPing {
+    0%,
+    100% {
+      opacity: 0.6;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.4);
+    }
+  }
+}
